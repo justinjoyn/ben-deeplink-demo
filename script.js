@@ -14,16 +14,8 @@ function deepLink() {
         // Function to attempt to open the app
         function openApp() {
             if (isIOS) {
-                // Create an invisible iframe
-                var iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = appDeeplink;
-                document.body.appendChild(iframe);
-
-                // Remove iframe after use
-                setTimeout(function() {
-                    document.body.removeChild(iframe);
-                }, 100);
+                // For iOS, use the custom scheme
+                window.location = appDeeplink;
             }  else if (isAndroid) {
                 // For Android, use the intent scheme
                 var intentUrl = 'intent://#Intent;scheme=ben;package=com.thanksben.ben;end';
